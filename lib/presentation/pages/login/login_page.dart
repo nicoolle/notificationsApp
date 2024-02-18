@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:make_it_app/presentation/controllers/login/login_controller.dart';
+import 'package:make_it_app/presentation/pages/login/confirm_button.dart';
+import 'package:make_it_app/presentation/pages/login/error_message.dart';
 import 'package:make_it_app/style/app_sizes.dart';
 import 'package:make_it_app/utils/app_bar.dart';
 import 'package:pinput/pinput.dart';
@@ -51,6 +53,8 @@ class LoginPage extends GetView<LoginController> {
               ),
               gapH32,
               Pinput(
+                onTap: controller.removeErrorMessage,
+                onChanged: (v) => controller.onPinChanged(v),
                 controller: controller.pinController,
                 separatorBuilder: (index) => index == 1
                     ? Text(
@@ -70,13 +74,14 @@ class LoginPage extends GetView<LoginController> {
               Expanded(
                 child: Align(
                     alignment: Alignment.bottomCenter,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 13.0, vertical: 20),
-                      child: FilledButton(
-                        onPressed: () {controller.onConfirm();},
-                        child: const Text('Confirm'),
-                      ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        controller.isTimeWrong.value
+                            ? const LoginErrorMessage()
+                            : Container(),
+                        const ConfirmButton()
+                      ],
                     )),
               )
             ],
