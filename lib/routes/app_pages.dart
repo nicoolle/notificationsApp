@@ -1,6 +1,8 @@
 import 'package:get/get_navigation/src/routes/get_route.dart';
+import 'package:make_it_app/presentation/controllers/add_notification/add_notification_binding.dart';
 import 'package:make_it_app/presentation/controllers/login/login_binding.dart';
 import 'package:make_it_app/presentation/controllers/notifications/notifications_binding.dart';
+import 'package:make_it_app/presentation/pages/add_notification/add_notification_page.dart';
 import 'package:make_it_app/presentation/pages/login/login_page.dart';
 import 'package:make_it_app/presentation/pages/notifications/notifications_page.dart';
 import 'package:make_it_app/routes/routes.dart';
@@ -16,6 +18,11 @@ class AppPages {
       name: Routes.NOTIFICATIONS,
       page: () => const NotificationsPage(),
       binding: NotificationsBinding(),
-    )
+    ),
+    GetPage(
+      name: Routes.ADD_NOTIFICATION,
+      page: () => const AddNotificationPage(),
+      binding: AddNotificationBinding(),
+    ),
   ];
 }

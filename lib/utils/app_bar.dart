@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class MiAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const MiAppBar({super.key, required this.title})
+  const MiAppBar(
+      {super.key,
+      required this.title})
       : preferredSize = const Size.fromHeight(kToolbarHeight);
 
   final String title;
